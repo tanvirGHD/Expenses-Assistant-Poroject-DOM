@@ -1,11 +1,11 @@
 //getting all the value
-
+let count = 0;
 
 
 //add even listener for calculate button
 const calculateButton = document.getElementById('calculate');
 calculateButton.addEventListener('click',function(){
-    
+    count +=1;
     // call inputs (income,software,courses,internet)
     const income = parseFloat(document.getElementById('income').value);
     const software = parseFloat(document.getElementById('software').value);
@@ -35,6 +35,7 @@ calculateButton.addEventListener('click',function(){
     historyItem.className = 'bg-white p-3 rounded-md border-1-2 border-indigo-500';
 
     historyItem.innerHTML = `
+        <p class="text-xs text-gray-500">Serial: ${count}</p>
         <p class="text-xs text-gray-500">${new Date().toLocaleDateString()}</p>
         <p class="text-xs text-gray-500">Income: ${income.toFixed(2)}</p>
         <p class="text-xs text-gray-500">Expenses: ${totalExpenses.toFixed(2)}</p>
@@ -110,4 +111,22 @@ historyTab.addEventListener('click',function(){
     assistantTab.classList.add('text-gray-600')
     document.getElementById('expense-form').classList.add('hidden');
     document.getElementById('history-section').classList.remove('hidden');
+})
+
+//button colour change
+assistantTab.addEventListener('click',function(){
+    assistantTab.classList.add(
+        'text-white',
+        'bg-gradient-to-r',
+        'from-blue-500',
+        'to-purple-600'
+        )
+    historyTab.classList.remove(
+        'text-white',
+        'bg-gradient-to-r',
+        'from-blue-500',
+        'to-purple-600')
+
+        document.getElementById('expense-form').classList.remove('hidden');
+        document.getElementById('history-section').classList.add('hidden');
 })
